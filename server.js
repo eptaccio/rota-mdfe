@@ -23,8 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('X-HTTP-Method-Override'))
 app.use(express.static(__dirname + '/public'))
 
-const apiRoutes = express.Router()
-//require('./app/routes')(app, apiRoutes)
+require('./app/routes')(app)
 
 app.listen(port)
 console.log('Magic happens on port ' + port)

@@ -230,3 +230,28 @@ footer #footer-container h2 {
     background-color: #383634;
     text-align: center;
 }
+
+.angular-google-map-container {
+  height: 400px;
+  margin-bottom: 15px;
+}
+
+.panel-primary {
+  padding: 15px;
+}
+
+.mapa {
+    margin: 0 auto;
+    max-width: 100%;
+    width: 50%;
+}
+
+.mapa .panel {
+    height: 100vh;
+}
+
+.corner {
+	position: fixed;
+	top: 2%;
+	right: 1%;
+}

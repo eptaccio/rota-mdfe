@@ -1,3 +1,8 @@
+<div class="corner">
+    <div ng-if="mensagem.length > 0" class="alert alert-danger mensagem" role="alert">
+        {{ mensagem }}
+    </div>
+</div>
 <div id="fb-root"></div>
 <script>
     (function (d, s, id) {
@@ -7,6 +12,7 @@
         js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
 </script>
 <div class="header">
     <h1>Conheça o Rota MDF-e</h1>
@@ -15,26 +21,40 @@
 
     <div class="control-group form-file-fileXml ">
         <div class="controls">
-            <input type="file" name="fileXML" id="fileXML" onchange="LerFileInput(this)" accept=".xml" style="display: none" class="span2">
             <a class="btn" style="background-color: #efd314; border: none; color: #4d4408;" href="#" role="button">Selecionar XML do computador</a>
 
         </div>
         <img class="down" src="img/down.png">
     </div>
-
 </div>
 
 <div class="corpo">
-    <h1>Cole aqui o XML de seu MDF-e</h1>
-    <div class="small"><small>ou utilize um XML de teste</small></div>
+    <div ng-show="corpo_div">
+        <h1>Cole aqui o XML</h1>
+        <div class="small"><small>ou utilize um XML de teste</small></div>
 
-    <center><a class="btn xml_teste" style="background-color: #0088cc; border: none; color: white;" href="#" role="button">XML de teste</a></center>
+        <center><a class="btn xml_teste" style="background-color: #0088cc; border: none; color: white;" href="#" role="button" ng-click="ObterXML()">XML de teste</a></center>
 
-    <textarea class="form-control" id="exampleTextarea" rows="15"></textarea>
+        <textarea class="form-control" id="exampleTextarea" rows="15" ng-model="xml_documento"></textarea>
 
-    <center><a class="btn xml_visualizar" style="background-color: #0088cc; border: none; color: white;" href="#" role="button">Visualizar</a></center>
+        <center><a class="btn xml_visualizar" style="background-color: #0088cc; border: none; color: white;" href="#" role="button"
+                ng-click="getDirections()">Visualizar</a></center>
 
-    <div class="fb-comments" data-href="http://www.tecnospeed.com.br/rotamdf-e" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+        <div class="fb-comments" data-href="http://www.tecnospeed.com.br/rotamdf-e" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+    </div>
+</div>
 
+<div ng-if="map_div == true" class="mapa">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <google-map control="map.control" center="map.center" zoom="map.zoom">
+                <marker coords="marker.center"></marker>
+            </google-map>
+
+            <div ng-show="direcoes" id="directionsList" class="panel panel-primary"></div>
+
+        </div>
+    </div>
+</div>
 
 </div>
